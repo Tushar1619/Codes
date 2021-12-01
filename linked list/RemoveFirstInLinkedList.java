@@ -44,7 +44,6 @@ public class RemoveFirstInLinkedList {
           System.out.println("List is empty");
       }else if(size==1){
         head=tail=null;
-        size=0;
       }else{
           head=head.next;
           size--;
