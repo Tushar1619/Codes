@@ -266,7 +266,7 @@ public class MergeSortALinkedList {
     public static LinkedList mergeSort(Node head, Node tail){
       // write your code here
       if(head==tail){
-          LinkedList bres = new
+          LinkedList bres = new LinkedList();
           bres.addLast(head.data);
           return bres;
       }
