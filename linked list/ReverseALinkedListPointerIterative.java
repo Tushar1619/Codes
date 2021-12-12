@@ -181,6 +181,20 @@ public class ReverseALinkedListPointerIterative {
  
     public void reversePI(){
       // write your code here
+      Node curr = head;
+      Node prev=null;
+
+      while(curr != null){
+        Node temp=curr.next;
+        curr.next=prev;
+        prev=curr;
+        curr=temp;
+        
+      }
+      Node tailtemp=tail;
+      tail=head;
+      head=tailtemp;
+
     }
   }
 
