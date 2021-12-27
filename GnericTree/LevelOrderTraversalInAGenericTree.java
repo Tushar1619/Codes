@@ -98,7 +98,7 @@ public class LevelOrderTraversalInAGenericTree {
 
   while(q.size()!=0){
       node=q.remove();
-      System.out.println(node.data);
+      System.out.print(node.data);
 
       for(Node child:node.children){
           q.add(child);
