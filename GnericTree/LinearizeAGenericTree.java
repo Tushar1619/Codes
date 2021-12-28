@@ -157,7 +157,7 @@ public class LinearizeAGenericTree {
 
     while(node.children.size()>1){
         Node lc=node.children.remove(node.children.size()-1);
-        Node slc=node.children.get(node.childern.size()-1);
+        Node slc=node.children.get(node.children.size()-1);
         Node slkt=getTail(slc);
         slkt.children.add(lc);
     }
