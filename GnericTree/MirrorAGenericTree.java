@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class LevelOrderTraversalInAGenericTree {
+public class MirrorAGenericTree {
   private static class Node {
     int data;
     ArrayList<Node> children = new ArrayList<>();
@@ -91,20 +91,48 @@ public class LevelOrderTraversalInAGenericTree {
     System.out.println("Node Post " + node.data);
   }
 
-  public static void levelOrder(Node node){
-    // write your code here
-  Queue<Node> q = new ArrayDeque<>();
-  q.add(node);
+  public static void levelOrderLinewiseZZ(Node node){
+    Stack<Node> stack = new Stack<>();
+    stack.add(node);
 
-  while(q.size()!=0){
-      node=q.remove();
-      System.out.print(node.data +" ");
+    Stack<Node> cstack = new Stack<>();
+    int level = 0;
 
-      for(Node child:node.children){
-          q.add(child);
+    while(stack.size() > 0){
+      node = stack.pop();
+      System.out.print(node.data + " ");
+
+      if(level % 2 == 0){
+        for(int i = 0; i < node.children.size(); i++){
+          Node child = node.children.get(i);
+          cstack.push(child);
+        }
+      } else {
+        for(int i = node.children.size() - 1; i >= 0; i--){
+          Node child = node.children.get(i);
+          cstack.push(child);
+        }
       }
+
+      if(stack.size() == 0){
+        stack = cstack;
+        cstack = new Stack<>();
+        level++;
+        System.out.println();
+      }
+    }
   }
-  System.out.println(".");
+
+  public static void mirror(Node node){
+    // write your code here
+    //we have a faith that children of root knows how to get theri child mirrored
+
+    for(Node child:node.children){
+        mirror(child);
+    }
+//here we mirror the children of root node(to satisfy the expecation to faith)
+    Collections.reverse(node.children);
+
   }
 
   public static void main(String[] args) throws Exception {
@@ -117,7 +145,9 @@ public class LevelOrderTraversalInAGenericTree {
     }
 
     Node root = construct(arr);
-    levelOrder(root);
+    display(root);
+    mirror(root);
+    display(root);
   }
 
 }
