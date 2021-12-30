@@ -90,7 +90,7 @@ public class AreTreesSimilarInShape {
        Node c1=n1.children.get(i);
        Node c2=n2.children.get(i);
 
-       boolean cres = areSimilar(n1, n2);
+       boolean cres = areSimilar(c1, c2);
        if(cres==false){
            return false;
        }
