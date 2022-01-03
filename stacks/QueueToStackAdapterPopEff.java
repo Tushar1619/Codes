@@ -82,6 +82,4 @@ public class QueueToStackAdapterPopEff {
       str = br.readLine();
     }
   }
-}public class QueueToStackAdapterPopEff {
-    
 }

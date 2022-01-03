@@ -93,7 +93,7 @@ public class IsTreeSymmetric {
         Node c1=n1.children.get(i);
         Node c2=n2.children.get(j);
 
-        boolean cres = areMirror(c1, c2)
+        boolean cres = areMirror(c1, c2);
 
         if(cres==false){
             return false;
