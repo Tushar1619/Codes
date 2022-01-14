@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class GetCommonElements{
+public class GetCommonElements1{
 
 public static void main(String[] args) throws Exception {
     // write your code here
@@ -19,25 +19,21 @@ public static void main(String[] args) throws Exception {
         a2[i]=sc.nextInt();
     }
     
-    HashMap<Integer,Integer> hm = new HashMap<>();
-   for(int val: a1){
-       if(hm.containsKey(val)){
-         int of = hm.get(val);
-         int nf = of + 1;
-         hm.put(val, nf);
-       } else {
-          hm.put(val, 1);
-       }
+    HashMap<Integer,Boolean> hm = new HashMap<>();
+    for(int elem:a1){
+        if(hm.containsKey(elem)){
+            
+        }
+        else{
+            hm.put(elem,true);
+        }
     }
     
-    for(int key : a2){
-        if(hm.containsKey(key) && hm.get(key)>0){
+    for(int key:a2){
+        if(hm.containsKey(key)){
             System.out.println(key);
-            int oldv = hm.get(key);
-            int newv = oldv-1;
-            hm.put(key,newv);
+            hm.remove(key);
         }
     }
  }
-
 }
