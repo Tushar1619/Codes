@@ -1,7 +1,5 @@
 import java.io.*;
 import java.util.*;
-import java.io.*;
-import java.util.*;
 
 public class LongestConsecutiveSequence{
 
