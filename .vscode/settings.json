@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
         "stacks",
-        "GnericTree"
+        "GnericTree",
+        
     ]
 }
