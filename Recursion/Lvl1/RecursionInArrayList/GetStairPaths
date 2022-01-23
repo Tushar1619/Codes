@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n=sc.nextInt();
+        ArrayList<String> ans = getStairPaths(n);
+        System.out.println(ans);
+    }
+
+    public static ArrayList<String> getStairPaths(int n) {
+        if(n==0){
+            ArrayList<String> bc = new ArrayList<>();
+            bc.add("");
+            return bc;
+        }
+        if(n<0){
+            return new ArrayList<>();
+        }
+        ArrayList<String> fstep = getStairPaths(n-1);
+        ArrayList<String> sstep = getStairPaths(n-2);
+        ArrayList<String> tstep = getStairPaths(n-3);
+        
+        ArrayList<String> fres = new ArrayList<>();
+        
+        for(String val:fstep){
+            fres.add(1+val);
+        }
+        for(String val:sstep){
+            fres.add(2+val);
+        }
+        for(String val:tstep){
+            fres.add(3+val);
+        }
+        
+        return fres;
+        
+    }
+
+}
