@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+    Scanner sc =  new Scanner(System.in);
+    int dr=sc.nextInt();
+    int dc=sc.nextInt();
+    ArrayList<String> ans = getMazePaths(1,1,dr,dc);
+    System.out.println(ans);
+    }
+
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList<String> getMazePaths(int sr, int sc, int dr, int dc) {
+        if(sr==dr && sc==dc){
+        ArrayList<String> bc = new ArrayList<>();
+        bc.add("");
+        return bc;
+        }
+        ArrayList<String> fres = new ArrayList<>();
+        
+        for(int m=1;m<=dc-sc;m++){
+            ArrayList<String> hpath = getMazePaths(sr,sc+m,dr,dc);
+            
+            for(String val:hpath){
+                fres.add("h"+m+val);
+            }
+        }
+        
+        for(int m=1;m<=dr-sr;m++){
+            ArrayList<String> vpath = getMazePaths(sr+m,sc,dr,dc);
+            for(String val:vpath){
+                fres.add("v"+m+val);
+            }
+        }
+        for(int m=1;m<=dr-sr && m<=dc-sc;m++){
+            ArrayList<String> dpath = getMazePaths(sr+m,sc+m,dr,dc);
+            for(String val:dpath){
+                fres.add("d"+m+val);
+            }
+        }
+        
+        return fres;
+        
+        
+    }
+
+}
