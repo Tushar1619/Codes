@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+  public static void main(String[] args) throws Exception {
+    Scanner scn = new Scanner(System.in);
+    int n = scn.nextInt();
+    boolean[][] board = new boolean[n][n];
+    boolean[] colarr = new boolean[n];
+    boolean[] rtol = new boolean[2*n-1];
+    boolean[] ltor = new boolean[2*n-1];
+    
+    
+    printNQueens(board,colarr,rtol,ltor,0);
+    
+    
+  }
+  public static void printNQueens(boolean[][] board,boolean[] colarr,boolean[] rtol,boolean[] ltor,int row){
+      if(row==board.length){
+          
+          for(int i=0;i<board.length;i++){
+              for(int j=0;j<board.length;j++){
+                  if(board[i][j]==true){
+                      System.out.print(i+"-"+j+", ");
+                  }
+              }
+          }
+          System.out.println(".");
+          return;
+      }
+      
+      for(int col=0;col<board.length;col++){
+          if(board[row][col]==false && colarr[col]==false && ltor[row-col+board.length-1]==false && rtol[row+col]==false){
+            board[row][col]=true;
+            colarr[col]=true;
+            ltor[row-col+board.length-1]=true;
+            rtol[row+col]=true;
+            printNQueens(board,colarr,rtol,ltor,row+1);
+            board[row][col]=false;
+            colarr[col]=false;
+            ltor[row-col+board.length-1]=false;
+            rtol[row+col]=false;
+            
+            
+          }
+      }
+      
+  }
+
+    
+}
